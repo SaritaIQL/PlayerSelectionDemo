@@ -68,83 +68,100 @@ fun ImageView.loadImage(
     if (height != null && width != null) {
         requestOption.override(height, width)
         Glide.with(this.context)
-                .load(url)
-                .apply(requestOption)
-                .into(this)
+            .load(url)
+            .apply(requestOption)
+            .into(this)
     } else {
         Glide.with(this.context)
-                .load(url)
-                .apply(requestOption)
-                .into(this)
+            .load(url)
+            .apply(requestOption)
+            .into(this)
     }
 }
+
+fun ImageView.loadImageCustomPlaceHolder(
+    url: String?, place_hoder: Int = R.mipmap.ic_launcher,
+
+    ) {
+    val requestOption: RequestOptions = RequestOptions()
+        .placeholder(place_hoder)
+        .error(place_hoder)
+        .diskCacheStrategy(DiskCacheStrategy.ALL)
+        .transform(RoundedCorners(8.toPx))
+
+    Glide.with(this.context)
+        .load(url)
+        .placeholder(place_hoder)
+        .apply(requestOption)
+        .into(this)
+}
+
 
 fun ImageView.loadImageWithProgressBar(url: String, progressBar: ProgressBar) {
     progressBar.visible()
     this.inVisible()
     Glide.with(this.context)
-            .load(url)
-            .listener(object : RequestListener<Drawable> {
-                override fun onLoadFailed(
-                    e: GlideException?,
-                    model: Any?,
-                    target: com.bumptech.glide.request.target.Target<Drawable>?,
-                    isFirstResource: Boolean
-                ): Boolean {
-                    progressBar.gone()
-                    this@loadImageWithProgressBar.visible()
-                    return false
-                }
+        .load(url)
+        .listener(object : RequestListener<Drawable> {
+            override fun onLoadFailed(
+                e: GlideException?,
+                model: Any?,
+                target: com.bumptech.glide.request.target.Target<Drawable>?,
+                isFirstResource: Boolean
+            ): Boolean {
+                progressBar.gone()
+                this@loadImageWithProgressBar.visible()
+                return false
+            }
 
-                override fun onResourceReady(
-                    resource: Drawable,
-                    model: Any,
-                    target: com.bumptech.glide.request.target.Target<Drawable>?,
-                    dataSource: DataSource,
-                    isFirstResource: Boolean
-                ): Boolean {
-                    progressBar.gone()
-                    this@loadImageWithProgressBar.visible()
-                    return false
-                }
-            }).into(this)
+            override fun onResourceReady(
+                resource: Drawable,
+                model: Any,
+                target: com.bumptech.glide.request.target.Target<Drawable>?,
+                dataSource: DataSource,
+                isFirstResource: Boolean
+            ): Boolean {
+                progressBar.gone()
+                this@loadImageWithProgressBar.visible()
+                return false
+            }
+        }).into(this)
 
 }
 
 fun ImageView.loadImage(@DrawableRes res: Int, height: Int? = null, width: Int? = null) {
     if (height != null && width != null) {
         Glide.with(this.context)
-                .load(res)
-                .apply(RequestOptions().override(height, width))
-                .into(this)
+            .load(res)
+            .apply(RequestOptions().override(height, width))
+            .into(this)
 
     } else {
         Glide.with(this.context)
-                .load(res)
-                .into(this)
+            .load(res)
+            .into(this)
     }
 }
 
 fun ImageView.loadImage(uri: Uri, height: Int? = null, width: Int? = null) {
     if (height != null && width != null) {
         Glide.with(this.context)
-                .load(uri)
-                .apply(RequestOptions().override(height, width))
-                .into(this)
+            .load(uri)
+            .apply(RequestOptions().override(height, width))
+            .into(this)
 
     } else {
         Glide.with(this.context)
-                .load(uri)
-                .into(this)
+            .load(uri)
+            .into(this)
     }
 }
-
 
 
 fun ImageView.loadImage(uri: String, height: Int? = null, width: Int? = null, placeholder: Int) {
     if (height != null && width != null) {
         Glide.with(this.context)
-                .load(uri)
+            .load(uri)
             .apply(RequestOptions().override(height, width))
             .into(this)
 
@@ -155,8 +172,6 @@ fun ImageView.loadImage(uri: String, height: Int? = null, width: Int? = null, pl
             .into(this)
     }
 }
-
-
 
 
 fun ImageView.loadImage(file: File, height: Int? = null, width: Int? = null) {
