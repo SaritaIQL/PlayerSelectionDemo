@@ -44,20 +44,30 @@ class MainActivity : BaseActivity() {
 
         mBinding.tabLayout.addOnTabSelectedListener(object : OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
+                var rangeValue =""
                 when (tab.text.toString()) {
                     "A" -> {
                         setAdapter(allrounder_list)
+                       rangeValue =  mViewModel.getSelectionPlayerRange("A")
                     }
                     "W" -> {
                         setAdapter(wicketkeeper_list)
+                         rangeValue =  mViewModel.getSelectionPlayerRange("W")
+
                     }
                     "BL" -> {
                         setAdapter(bowler_list)
+                         rangeValue =  mViewModel.getSelectionPlayerRange("BL")
+
                     }
                     "BT" -> {
                         setAdapter(batsman_list)
+                         rangeValue =   mViewModel.getSelectionPlayerRange("BT")
+
                     }
+
                 }
+                mBinding.txtPlayerSelectionRange.text=rangeValue
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab) {}
@@ -114,6 +124,15 @@ class MainActivity : BaseActivity() {
                             Log.e("dataApi", "response : ${it.data.toString()}")
                             if (it.status == 1) {
                                 Log.e("dataApi", "response : ${it.data.toString()}")
+                                val bastManData = it.data!!.batsman
+                                val bowler = it.data!!.bowler
+                                val wicketKeeper = it.data!!.wicketkeeper
+                                val allRounder = it.data!!.allrounder
+
+                                mViewModel.batsman.value=bastManData
+                                mViewModel.wicketkeeper.value=wicketKeeper
+                                mViewModel.bowler.value=bowler
+                                mViewModel.allRoounderSize.value=allRounder
                             } else {
                                 Log.e("dataApi", "response not ")
 
