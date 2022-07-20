@@ -24,7 +24,7 @@ class UserRepository(private val mApiEndPoint: ApiEndPoint) : UserRepo {
         } else {
             lawyerResp.value = RequestState(progress = true)
             NetworkManager.requestData(
-                mApiEndPoint.getPlayerList(body),
+                mApiEndPoint.getPlayerList(),
                 baseView,
                 lawyerResp
             )
@@ -35,7 +35,7 @@ class UserRepository(private val mApiEndPoint: ApiEndPoint) : UserRepo {
         body: JsonObject,
         internetConnected: Boolean,
         baseView: BaseActivity,
-        lawyerResp: MutableLiveData<RequestState<MutableList<RulesResponse>>>
+        lawyerResp: MutableLiveData<RequestState<RulesResponse>>
     ) {
         if (!internetConnected) {
             lawyerResp.value =
@@ -43,7 +43,7 @@ class UserRepository(private val mApiEndPoint: ApiEndPoint) : UserRepo {
         } else {
             lawyerResp.value = RequestState(progress = true)
             NetworkManager.requestData(
-                mApiEndPoint.getPlayerRules(body),
+                mApiEndPoint.getPlayerRules(),
                 baseView,
                 lawyerResp
             )

@@ -9,7 +9,7 @@ import retrofit2.http.GET
 interface ApiEndPoint {
 
     @GET("getAllPlayer")
-    fun getPlayerList(): Call<CommonResponseModel<PlayerListResponse>>
+    fun getPlayerList(): Call<CommonResponseModel<MutableList<PlayerListResponse>>>
 
     @GET("getAllPlayerRules")
     fun getPlayerRules(): Call<CommonResponseModel<RulesResponse>>

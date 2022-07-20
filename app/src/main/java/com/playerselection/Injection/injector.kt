@@ -5,8 +5,10 @@ package com.playerselection.Injection
 import com.google.gson.GsonBuilder
 import com.playerselection.BuildConfig
 import com.playerselection.EndPoint.ApiEndPoint
+import com.playerselection.mainActivityModule
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.koin.android.viewmodel.dsl.viewModel
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
@@ -15,6 +17,7 @@ import org.koin.dsl.module
 val viewModelModule = module {
     single<UserRepo> { UserRepository(get()) }
 //    viewModel { SampleApiModule(get()) }
+    viewModel { mainActivityModule(get()) }
 }
 
 val networkModule = module {

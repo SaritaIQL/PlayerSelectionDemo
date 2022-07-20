@@ -19,6 +19,6 @@ interface UserRepo {
         body: JsonObject,
         internetConnected: Boolean,
         baseView: BaseActivity,
-        lawyerResp: MutableLiveData<RequestState<MutableList<RulesResponse>>>
+        lawyerResp: MutableLiveData<RequestState<RulesResponse>>
     )
 }
