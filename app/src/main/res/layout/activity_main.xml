@@ -8,107 +8,141 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
-   <androidx.cardview.widget.CardView
-       android:layout_width="match_parent"
-       android:layout_height="230dp"
-       app:layout_constraintStart_toStartOf="parent"
-       app:layout_constraintEnd_toEndOf="parent"
-       app:layout_constraintTop_toTopOf="parent"
-       >
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="230dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-       <androidx.constraintlayout.widget.ConstraintLayout
-           android:layout_width="match_parent"
-           android:layout_height="match_parent"
-           android:background="@drawable/reflecter">
-           <LinearLayout
-               android:id="@+id/lyTeamIconName"
-               android:layout_width="match_parent"
-               android:layout_height="100dp"
-               android:gravity="center"
-               android:orientation="horizontal"
-               android:layout_marginTop="8dp"
-               app:layout_constraintTop_toTopOf="parent"
-               app:layout_constraintStart_toStartOf="parent">
-               <ImageView
-                   android:layout_width="100dp"
-                   android:layout_height="100dp"
-                   android:src="@drawable/ic_team_a"/>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/reflecter">
 
-               <TextView
-                   android:layout_width="wrap_content"
-                   android:layout_height="match_parent"
-                   android:text="VS"
-                   android:textColor="@color/white"
-                   android:textSize="65sp"
-                   android:gravity="center"/>
+                <LinearLayout
+                    android:id="@+id/lyTeamIconName"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-               <ImageView
-                   android:layout_width="100dp"
-                   android:layout_height="100dp"
-                   android:src="@drawable/ic_team_b"/>
-           </LinearLayout>
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/ic_team_a" />
 
-           <LinearLayout
-               android:id="@+id/lyTotalPlayerInfo"
-               android:layout_width="0dp"
-               android:layout_height="0dp"
-               android:gravity="center"
-               android:layout_marginTop="8dp"
-               app:layout_constraintStart_toStartOf="parent"
-               app:layout_constraintEnd_toEndOf="parent"
-               app:layout_constraintBottom_toTopOf="@+id/lyUserSelectionIcon"
-               app:layout_constraintTop_toBottomOf="@+id/lyTeamIconName">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="VS"
+                        android:textColor="@color/white"
+                        android:textSize="65sp" />
 
-               <TextView
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:text="Total Players : "
-                   android:textColor="@color/white"
-                   android:textSize="20sp"/>
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/ic_team_b" />
+                </LinearLayout>
 
-               <TextView
-                   android:id="@+id/txtTotalPlayerSelected"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:text="5"
-                   android:textColor="@color/white"
-                   android:textSize="20sp"/>
+                <LinearLayout
+                    android:id="@+id/lyTotalPlayerInfo"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    app:layout_constraintBottom_toTopOf="@+id/lyUserSelectionIcon"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lyTeamIconName">
 
-               <TextView
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:text="/"
-                   android:textColor="@color/white"
-                   android:textSize="20sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total Players : "
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
 
-               <TextView
-                   android:id="@+id/txtTotalTeamPlayer"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:text="11"
-                   android:textColor="@color/white"
-                   android:textSize="20sp"/>
-           </LinearLayout>
+                    <TextView
+                        android:id="@+id/txtTotalPlayerSelected"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="5"
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
 
-           <LinearLayout
-               android:id="@+id/lyUserSelectionIcon"
-               android:layout_width="match_parent"
-               android:layout_height="70dp"
-               android:gravity="center"
-               android:paddingBottom="10dp"
-               app:layout_constraintBottom_toBottomOf="parent">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="/"
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
 
-               <androidx.recyclerview.widget.RecyclerView
-                   android:id="@+id/recSelectTeamProcess"
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:orientation="horizontal"
-                   app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                   tools:listitem="@layout/item_selection_icon"/>
-           </LinearLayout>
+                    <TextView
+                        android:id="@+id/txtTotalTeamPlayer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="11"
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
+                </LinearLayout>
 
-       </androidx.constraintlayout.widget.ConstraintLayout>
+                <LinearLayout
+                    android:id="@+id/lyUserSelectionIcon"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:gravity="center"
+                    android:paddingBottom="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent">
 
-   </androidx.cardview.widget.CardView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recSelectTeamProcess"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:listitem="@layout/item_selection_icon" />
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/appCompatTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/black"
+            android:paddingVertical="10dp"
+            android:text="Select Min-4 Max-2"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appCompatTextView"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="vertical"
+            tools:listitem="@layout/player_row_layout"/>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -62,44 +62,46 @@ class MainActivity : BaseActivity() {
                     it.data?.let { data ->
                         if (it.status == 1) {
                             Log.e("dataApi", "response : ${it.data.toString()}")
-                        if (it.status==1) {
-                           Log.e("dataApi","response : ${it.data.toString()}")
-                        } else {
-                            Log.e("dataApi", "response not ")
+                            if (it.status == 1) {
+                                Log.e("dataApi", "response : ${it.data.toString()}")
+                            } else {
+                                Log.e("dataApi", "response not ")
+
+                            }
 
                         }
-
                     }
-                }
 
-                requestState.error?.let { errorObj ->
-                    when (errorObj.errorState) {
-                        Config.NETWORK_ERROR ->
-                            displayMessage(
-                                this,
-                                getString(R.string.text_error_network)
-                            )
+                    requestState.error?.let { errorObj ->
+                        when (errorObj.errorState) {
+                            Config.NETWORK_ERROR ->
+                                displayMessage(
+                                    this,
+                                    getString(R.string.text_error_network)
+                                )
 
-                        Config.CUSTOM_ERROR ->
-                            errorObj.customMessage
-                                ?.let {
-                                    if (errorObj.code == ApiConstant.API_401) {
-                                        displayMessage(this, it)
-                                    } else {
+                            Config.CUSTOM_ERROR ->
+                                errorObj.customMessage
+                                    ?.let {
+                                        if (errorObj.code == ApiConstant.API_401) {
+                                            displayMessage(this, it)
+                                        } else {
 
-                                        displayMessage(this, it)
+                                            displayMessage(this, it)
+                                        }
                                     }
-                                }
+                        }
                     }
                 }
+
             }
 
         }
 
+
     }
 
     override fun handleListener() {
+
     }
-
-
 }
