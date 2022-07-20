@@ -9,17 +9,104 @@
 
    <androidx.cardview.widget.CardView
        android:layout_width="match_parent"
-       android:layout_height="200dp"
+       android:layout_height="230dp"
        app:layout_constraintStart_toStartOf="parent"
        app:layout_constraintEnd_toEndOf="parent"
        app:layout_constraintTop_toTopOf="parent"
        >
 
-       <LinearLayout
+       <androidx.constraintlayout.widget.ConstraintLayout
            android:layout_width="match_parent"
            android:layout_height="match_parent"
-           android:orientation="vertical"
-           android:background="@drawable/reflecter"></LinearLayout>
+           android:background="@drawable/reflecter">
+           <LinearLayout
+               android:id="@+id/lyTeamIconName"
+               android:layout_width="match_parent"
+               android:layout_height="100dp"
+               android:gravity="center"
+               android:orientation="horizontal"
+               android:layout_marginTop="8dp"
+               app:layout_constraintTop_toTopOf="parent"
+               app:layout_constraintStart_toStartOf="parent">
+               <ImageView
+                   android:layout_width="100dp"
+                   android:layout_height="100dp"
+                   android:src="@drawable/ic_team_a"/>
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="match_parent"
+                   android:text="VS"
+                   android:textColor="@color/white"
+                   android:textSize="65sp"
+                   android:gravity="center"/>
+
+               <ImageView
+                   android:layout_width="100dp"
+                   android:layout_height="100dp"
+                   android:src="@drawable/ic_team_b"/>
+           </LinearLayout>
+
+           <LinearLayout
+               android:id="@+id/lyTotalPlayerInfo"
+               android:layout_width="0dp"
+               android:layout_height="0dp"
+               android:gravity="center"
+               android:layout_marginTop="8dp"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintEnd_toEndOf="parent"
+               app:layout_constraintBottom_toTopOf="@+id/lyUserSelectionIcon"
+               app:layout_constraintTop_toBottomOf="@+id/lyTeamIconName">
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="Total Players : "
+                   android:textColor="@color/white"
+                   android:textSize="20sp"/>
+
+               <TextView
+                   android:id="@+id/txtTotalPlayerSelected"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="5"
+                   android:textColor="@color/white"
+                   android:textSize="20sp"/>
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="/"
+                   android:textColor="@color/white"
+                   android:textSize="20sp"/>
+
+               <TextView
+                   android:id="@+id/txtTotalTeamPlayer"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="11"
+                   android:textColor="@color/white"
+                   android:textSize="20sp"/>
+           </LinearLayout>
+
+           <LinearLayout
+               android:id="@+id/lyUserSelectionIcon"
+               android:layout_width="match_parent"
+               android:layout_height="70dp"
+               android:gravity="center"
+               android:paddingBottom="10dp"
+               app:layout_constraintBottom_toBottomOf="parent">
+
+               <androidx.recyclerview.widget.RecyclerView
+                   android:id="@+id/recSelectTeamProcess"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:orientation="horizontal"
+                   app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                   tools:listitem="@layout/item_selection_icon"/>
+           </LinearLayout>
+
+       </androidx.constraintlayout.widget.ConstraintLayout>
 
    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
