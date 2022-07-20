@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/reflecter.xml" value="0.156" />
         <entry key="app/src/main/res/drawable/toast_rounded.xml" value="0.156" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.22916666666666666" />
         <entry key="app/src/main/res/layout/progress_dialog.xml" value="0.22916666666666666" />
