@@ -10,13 +10,12 @@ import com.playerselection.adapter.PlayerAdapter
 import com.playerselection.common.Config
 import com.playerselection.databinding.ActivityMainBinding
 import com.playerselection.util.ApiConstant
-import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
 class MainActivity : BaseActivity() {
     private lateinit var mBinding: ActivityMainBinding
-    private val mViewModel: mainActivityModule by viewModel()
+    private val mViewModel: MainActivityModule by viewModel()
     var playerAdapter: PlayerAdapter? = null
     var allrounder_list = ArrayList<player_data>()
     var batsman_list = ArrayList<player_data>()
@@ -37,37 +36,38 @@ class MainActivity : BaseActivity() {
             true,
             this@MainActivity,
         )
-        mBinding.tabLayout.addTab(tabLayout.newTab().setText("A"))
-        mBinding.tabLayout.addTab(tabLayout.newTab().setText("W"))
-        mBinding.tabLayout.addTab(tabLayout.newTab().setText("BL"))
-        mBinding.tabLayout.addTab(tabLayout.newTab().setText("BT"))
+        mBinding.myViewModel = mViewModel
+        mBinding.tabLayout.addTab(mBinding.tabLayout.newTab().setText("A"))
+        mBinding.tabLayout.addTab(mBinding.tabLayout.newTab().setText("W"))
+        mBinding.tabLayout.addTab(mBinding.tabLayout.newTab().setText("BL"))
+        mBinding.tabLayout.addTab(mBinding.tabLayout.newTab().setText("BT"))
 
         mBinding.tabLayout.addOnTabSelectedListener(object : OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
-                var rangeValue =""
+                var rangeValue = ""
                 when (tab.text.toString()) {
                     "A" -> {
                         setAdapter(allrounder_list)
-                       rangeValue =  mViewModel.getSelectionPlayerRange("A")
+                        rangeValue = mViewModel.getSelectionPlayerRange("A")
                     }
                     "W" -> {
                         setAdapter(wicketkeeper_list)
-                         rangeValue =  mViewModel.getSelectionPlayerRange("W")
+                        rangeValue = mViewModel.getSelectionPlayerRange("W")
 
                     }
                     "BL" -> {
                         setAdapter(bowler_list)
-                         rangeValue =  mViewModel.getSelectionPlayerRange("BL")
+                        rangeValue = mViewModel.getSelectionPlayerRange("BL")
 
                     }
                     "BT" -> {
                         setAdapter(batsman_list)
-                         rangeValue =   mViewModel.getSelectionPlayerRange("BT")
+                        rangeValue = mViewModel.getSelectionPlayerRange("BT")
 
                     }
 
                 }
-                mBinding.txtPlayerSelectionRange.text=rangeValue
+                mBinding.txtPlayerSelectionRange.text = rangeValue
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab) {}
@@ -129,10 +129,10 @@ class MainActivity : BaseActivity() {
                                 val wicketKeeper = it.data!!.wicketkeeper
                                 val allRounder = it.data!!.allrounder
 
-                                mViewModel.batsman.value=bastManData
-                                mViewModel.wicketkeeper.value=wicketKeeper
-                                mViewModel.bowler.value=bowler
-                                mViewModel.allRoounderSize.value=allRounder
+                                mViewModel.batsman.value = bastManData
+                                mViewModel.wicketkeeper.value = wicketKeeper
+                                mViewModel.bowler.value = bowler
+                                mViewModel.allRoounderSize.value = allRounder
                             } else {
                                 Log.e("dataApi", "response not ")
 

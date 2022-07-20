@@ -12,18 +12,16 @@ import com.playerselection.Injection.UserRepo
 import com.playerselection.Injection.UserRepository
 import com.playerselection.common.RequestState
 
-class mainActivityModule(private val mUserRepository: UserRepo) : ViewModel() {
-
-    //PLAYER_LIST
-    private val playerListRepo = MutableLiveData<RequestState<PlayerListResponse>>()
-    fun getPlayerList(): LiveData<RequestState<PlayerListResponse>> =
-        playerListRepo
-
+class MainActivityModule(private val mUserRepository: UserRepo) : ViewModel() {
      val allRoounderSize = MutableLiveData<Max_min>()
      val wicketkeeper = MutableLiveData<Max_min>()
      val batsman = MutableLiveData<Max_min>()
      val bowler = MutableLiveData<Max_min>()
 
+    //PLAYER_LIST
+    private val playerListRepo = MutableLiveData<RequestState<PlayerListResponse>>()
+    fun getPlayerList(): LiveData<RequestState<PlayerListResponse>> =
+        playerListRepo
     val inputSelection = MutableLiveData<String>()
 
     init {
