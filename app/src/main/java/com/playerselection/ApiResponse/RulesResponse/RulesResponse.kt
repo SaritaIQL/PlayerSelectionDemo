@@ -10,6 +10,7 @@ data class RulesResponse(
     val total_credit: Int,
     val wicketkeeper: Max_min
 )
+
 data class Max_min(
     val max: Int,
     val min: Int
