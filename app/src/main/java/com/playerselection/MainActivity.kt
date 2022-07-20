@@ -26,6 +26,10 @@ class MainActivity : BaseActivity() {
             true,
             this@MainActivity,
         )
+        mViewModel.getPlayerMAX_MIN_INFO(
+            true,
+            this@MainActivity,
+        )
         mBinding.tabLayout.addTab(tabLayout.newTab().setText("A"))
         mBinding.tabLayout.addTab(tabLayout.newTab().setText("W"))
         mBinding.tabLayout.addTab(tabLayout.newTab().setText("BL"))
@@ -56,6 +60,48 @@ class MainActivity : BaseActivity() {
 
     override fun initObserver() {
         mViewModel.getPlayerList().observe(this) { response ->
+            response.let { requestState ->
+                showLoadingIndicator(requestState.progress)
+                requestState.apiResponse?.let {
+                    it.data?.let { data ->
+                        if (it.status == 1) {
+                            Log.e("dataApi", "response : ${it.data.toString()}")
+                            if (it.status == 1) {
+                                Log.e("dataApi", "response : ${it.data.toString()}")
+                            } else {
+                                Log.e("dataApi", "response not ")
+
+                            }
+
+                        }
+                    }
+
+                    requestState.error?.let { errorObj ->
+                        when (errorObj.errorState) {
+                            Config.NETWORK_ERROR ->
+                                displayMessage(
+                                    this,
+                                    getString(R.string.text_error_network)
+                                )
+
+                            Config.CUSTOM_ERROR ->
+                                errorObj.customMessage
+                                    ?.let {
+                                        if (errorObj.code == ApiConstant.API_401) {
+                                            displayMessage(this, it)
+                                        } else {
+
+                                            displayMessage(this, it)
+                                        }
+                                    }
+                        }
+                    }
+                }
+
+            }
+
+        }
+        mViewModel.getPlayerRules().observe(this) { response ->
             response.let { requestState ->
                 showLoadingIndicator(requestState.progress)
                 requestState.apiResponse?.let {
