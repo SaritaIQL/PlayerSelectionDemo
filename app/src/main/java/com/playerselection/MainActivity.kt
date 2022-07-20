@@ -25,8 +25,6 @@ class MainActivity : BaseActivity() {
     override fun initView() {
         mBinding = getBinding()
 
-
-
         mViewModel.getPlayerList(
             true,
             this@MainActivity,
@@ -40,7 +38,6 @@ class MainActivity : BaseActivity() {
                 requestState.apiResponse?.let {
                     it.data?.let { data ->
                         if (it.status==1) {
-
                            Log.e("dataApi","response : ${it.data.toString()}")
                         } else {
                             Log.e("dataApi","response not ")

@@ -16,7 +16,7 @@ class UserRepository(private val mApiEndPoint: ApiEndPoint) : UserRepo {
         body: JsonObject,
         internetConnected: Boolean,
         baseView: BaseActivity,
-        lawyerResp: MutableLiveData<RequestState<MutableList<PlayerListResponse>>>
+        lawyerResp: MutableLiveData<RequestState<PlayerListResponse>>
     ) {
         if (!internetConnected) {
             lawyerResp.value =
@@ -47,5 +47,6 @@ class UserRepository(private val mApiEndPoint: ApiEndPoint) : UserRepo {
                 baseView,
                 lawyerResp
             )
-        }    }
+        }
+    }
 }

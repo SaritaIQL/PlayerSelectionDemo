@@ -6,14 +6,15 @@ import androidx.lifecycle.ViewModel
 import com.google.gson.JsonObject
 import com.playerselection.ApiResponse.PlayerListResponse
 import com.playerselection.Appbase.BaseActivity
+import com.playerselection.Injection.UserRepo
 import com.playerselection.Injection.UserRepository
 import com.playerselection.common.RequestState
 
-class mainActivityModule(private val mUserRepository: UserRepository) : ViewModel() {
+class mainActivityModule(private val mUserRepository: UserRepo) : ViewModel() {
 
-    private val playerListRepo = MutableLiveData<RequestState<MutableList<PlayerListResponse>>>()
+    private val playerListRepo = MutableLiveData<RequestState<PlayerListResponse>>()
 
-    fun getPlayerList(): LiveData<RequestState<MutableList<PlayerListResponse>>> =
+    fun getPlayerList(): LiveData<RequestState<PlayerListResponse>> =
         playerListRepo
 
     fun getPlayerList(
