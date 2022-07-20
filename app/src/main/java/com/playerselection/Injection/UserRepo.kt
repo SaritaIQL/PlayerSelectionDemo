@@ -12,7 +12,7 @@ interface UserRepo {
         body: JsonObject,
         internetConnected: Boolean,
         baseView: BaseActivity,
-        lawyerResp: MutableLiveData<RequestState<MutableList<PlayerListResponse>>>
+        lawyerResp: MutableLiveData<RequestState<PlayerListResponse>>
     )
 
     fun getPlayerRules(
