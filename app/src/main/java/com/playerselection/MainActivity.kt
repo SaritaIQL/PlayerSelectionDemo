@@ -62,6 +62,8 @@ class MainActivity : BaseActivity() {
                     it.data?.let { data ->
                         if (it.status == 1) {
                             Log.e("dataApi", "response : ${it.data.toString()}")
+                        if (it.status==1) {
+                           Log.e("dataApi","response : ${it.data.toString()}")
                         } else {
                             Log.e("dataApi", "response not ")
 
