@@ -19,10 +19,10 @@ object NetworkManager {
         baseView: BaseView,
         callback: MutableLiveData<RequestState<T>>
 
-    )  {
+    ) {
         callback.postValue(RequestState(progress = true))
         call.enqueue(object : Callback<CommonResponseModel<T>> {
-            override fun onFailure(call:  retrofit2.Call<CommonResponseModel<T>>, t: Throwable) {
+            override fun onFailure(call: retrofit2.Call<CommonResponseModel<T>>, t: Throwable) {
                 Timber.d("Retrofit onFailure ${t.localizedMessage}")
                 if (call.isCanceled) {
                     Timber.d("request was cancelled")
@@ -47,7 +47,7 @@ object NetworkManager {
             }
 
             override fun onResponse(
-                call:  retrofit2.Call<CommonResponseModel<T>>,
+                call: retrofit2.Call<CommonResponseModel<T>>,
                 response: Response<CommonResponseModel<T>>
             ) {
                 if (response.isSuccessful) {
@@ -60,19 +60,22 @@ object NetworkManager {
                         /**
                          * incase of status is 0 or else ... not 1 will print body message
                          */
-                        Log.e("network_message","Display network error message : "+response.message())
-                        callback?.postValue(
+                        Log.e(
+                            "network_message",
+                            "Display network error message : " + response.message()
+                        )
+                        callback.postValue(
                             RequestState(
                                 error = ApiError(
-                                    Config.CUSTOM_ERROR, response.body()?.message,response.code()
+                                    Config.CUSTOM_ERROR, response.body()?.message, response.code()
                                 )
                             )
-//                        callback.postValue(
-//                            RequestState(
-//                                error = ApiError(
-//                                    Config.CUSTOM_ERROR, response.body()?.message
-//                                )
-//                            )
+                    //                        callback.postValue(
+                    //                            RequestState(
+                    //                                error = ApiError(
+                    //                                    Config.CUSTOM_ERROR, response.body()?.message
+                    //                                )
+                    //                            )
                         )
                     }
                 } else {

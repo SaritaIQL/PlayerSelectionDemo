@@ -3,23 +3,20 @@ package com.playerselection.common
 import com.google.gson.annotations.SerializedName
 
 data class CommonResponseModel<T>(
-        @SerializedName("status")
-        var status: Int,
-        @SerializedName("message")
-        var message: String? = null,
-        @SerializedName("data")
-        var data: T? = null
+    @SerializedName("status")
+    var status: Int,
+    @SerializedName("message")
+    var message: String? = null,
+    @SerializedName("data")
+    var data: T? = null
 )
-
 
 
 data class RequestState<T>(
-        val error: ApiError? = null,
-        val progress: Boolean = false,
-        val apiResponse: CommonResponseModel<T>? = null
+    val error: ApiError? = null,
+    val progress: Boolean = false,
+    val apiResponse: CommonResponseModel<T>? = null
 )
-
-
 
 
 /**
@@ -27,4 +24,4 @@ data class RequestState<T>(
  * you can set CUSTOM_ERROR, NETWORK_ERROR
  * In case of CUSTOM_ERROR, you have to set customMessage also
  */
-data class ApiError(val errorState: String, val customMessage: String?,val code: Int =404)
+data class ApiError(val errorState: String, val customMessage: String?, val code: Int = 404)

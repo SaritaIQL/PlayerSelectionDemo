@@ -16,7 +16,7 @@ data class player_data(
     val point: String,
     val team_name: String,
     val type: String,
-    var count: Int=0,
+    var count: Int = 0,
 )
 
 

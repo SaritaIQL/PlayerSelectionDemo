@@ -48,7 +48,7 @@ class PlayerAdapter(
             player_img.loadImageCustomPlaceHolder(data.image)
             tvName.text = data.name
             tvTeamName.text = data.team_name
-            tvCounter.text = data.count.toString()
+            tvCounter.text = data.point.toString()
             itemView.setOnClickListener { listener.onItemClick(position) }
             btnMinimise.setOnClickListener { listener.ontItemMinus(position) }
             btnMaximise.setOnClickListener { listener.onItemPlus(position) }

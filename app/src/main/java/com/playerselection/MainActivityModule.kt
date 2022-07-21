@@ -9,24 +9,23 @@ import com.playerselection.ApiResponse.RulesResponse.Max_min
 import com.playerselection.ApiResponse.RulesResponse.RulesResponse
 import com.playerselection.Appbase.BaseActivity
 import com.playerselection.Injection.UserRepo
-import com.playerselection.Injection.UserRepository
 import com.playerselection.common.RequestState
 
 class MainActivityModule(private val mUserRepository: UserRepo) : ViewModel() {
-     val allRoounderSize = MutableLiveData<Max_min>()
-     val wicketkeeper = MutableLiveData<Max_min>()
-     val batsman = MutableLiveData<Max_min>()
-     val bowler = MutableLiveData<Max_min>()
+    val allRoounderSize = MutableLiveData<Max_min>()
+    val wicketkeeper = MutableLiveData<Max_min>()
+    val batsman = MutableLiveData<Max_min>()
+    val bowler = MutableLiveData<Max_min>()
+    val inputSelection = MutableLiveData<String>()
 
+    //    init {
+//        inputSelection.value="No selection"
+//    }
     //PLAYER_LIST
     private val playerListRepo = MutableLiveData<RequestState<PlayerListResponse>>()
     fun getPlayerList(): LiveData<RequestState<PlayerListResponse>> =
         playerListRepo
-    val inputSelection = MutableLiveData<String>()
 
-    init {
-        inputSelection.value="No selection"
-    }
     fun getPlayerList(
         isInternetConnected: Boolean,
         baseView: BaseActivity,
@@ -59,26 +58,27 @@ class MainActivityModule(private val mUserRepository: UserRepo) : ViewModel() {
         )
     }
 
-    fun getSelectionPlayerRange(selectionCategory: String) : String {
-        when(selectionCategory){
-            "A"->{
-                inputSelection.value="Selection allrounder( "+ allRoounderSize.value!!.min + " - " + allRoounderSize.value!!.max.toString()+ " )"
+    fun getSelectionPlayerRange(selectionCategory: String) {
+        when (selectionCategory) {
+            "A" -> {
+//                inputSelection.value="Selection allrounder( "+ allRoounderSize.value!!.min + " - " + allRoounderSize.value!!.max.toString()+ " )"
+                inputSelection.value = selectionCategory
             }
-            "W"->{
-                inputSelection.value="Selection wicketkeepr( "+ wicketkeeper.value!!.min + " - " + wicketkeeper.value!!.max.toString()+ " )"
+            "W" -> {
+//                inputSelection.value="Selection wicketkeepr( "+ wicketkeeper.value!!.min + " - " + wicketkeeper.value!!.max.toString()+ " )"
+                inputSelection.value = selectionCategory
+            }
+            "BL" -> {
+//                inputSelection.value="Selection bolwer( "+ bowler.value!!.min + " - " + bowler.value!!.max.toString()+ " )"
+                inputSelection.value = selectionCategory
+            }
+            "BT" -> {
+//                inputSelection.value="Selection batman( "+ batsman.value!!.min + " - " + batsman.value!!.max.toString()+ " )"
+                inputSelection.value = selectionCategory
+            }
 
-            }
-            "BL"->{
-                inputSelection.value="Selection bolwer( "+ bowler.value!!.min + " - " + bowler.value!!.max.toString()+ " )"
-            }
-            "BT"->{
-                inputSelection.value="Selection batman( "+ batsman.value!!.min + " - " + batsman.value!!.max.toString()+ " )"
-            }
-            else->{
-
-            }
         }
-        return  inputSelection.value!!
+//        return  inputSelection.value!!
 
     }
 }

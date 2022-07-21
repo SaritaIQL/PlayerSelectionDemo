@@ -8,7 +8,14 @@ import com.google.android.material.textview.MaterialTextView
 import com.playerselection.R
 
 object CustomToast {
-    fun showToast(context: Context?, toast_title: String?, duration: Boolean, txtColor: Int, bgColor: Int, postion: Boolean) {
+    fun showToast(
+        context: Context?,
+        toast_title: String?,
+        duration: Boolean,
+        txtColor: Int,
+        bgColor: Int,
+        postion: Boolean
+    ) {
         /*val toast: Toast = if (duration) {
             Toast.makeText(context, toast_title, Toast.LENGTH_LONG)
         } else {

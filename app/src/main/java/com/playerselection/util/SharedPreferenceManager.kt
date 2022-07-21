@@ -18,7 +18,6 @@ object SharedPreferenceManager {
     }
 
 
-
     fun putBoolean(key: String, value: Boolean) {
         editor!!.putBoolean(key, value)
         editor!!.commit()
@@ -70,8 +69,6 @@ object SharedPreferenceManager {
     }
 
 
-
-
     fun clearCityState() {
 //        putString(AppConstants.startTime, "")
 //        putString(AppConstants.STATE, "")
@@ -82,7 +79,6 @@ object SharedPreferenceManager {
     fun removeString(key: String) {
         editor!!.remove(key).commit()
     }
-
 
 
 }

@@ -11,7 +11,7 @@ import kotlin.reflect.KProperty
  * @param key key of particular value
  * */
 fun SharedPreferences.prefInt(def: Int = 0, key: String? = null) =
-        preferenceManager(def, key, SharedPreferences::getInt, SharedPreferences.Editor::putInt)
+    preferenceManager(def, key, SharedPreferences::getInt, SharedPreferences.Editor::putInt)
 
 /**
  * To store long type of value in shared preferences
@@ -19,7 +19,7 @@ fun SharedPreferences.prefInt(def: Int = 0, key: String? = null) =
  * @param key key of particular value
  * */
 fun SharedPreferences.prefLong(def: Long = 0, key: String? = null) =
-        preferenceManager(def, key, SharedPreferences::getLong, SharedPreferences.Editor::putLong)
+    preferenceManager(def, key, SharedPreferences::getLong, SharedPreferences.Editor::putLong)
 
 /**
  * To store String type of value in shared preferences
@@ -27,7 +27,7 @@ fun SharedPreferences.prefLong(def: Long = 0, key: String? = null) =
  * @param key key of particular value
  * */
 fun SharedPreferences.prefString(def: String = "", key: String? = null) =
-        preferenceManager(def, key, SharedPreferences::getString, SharedPreferences.Editor::putString)
+    preferenceManager(def, key, SharedPreferences::getString, SharedPreferences.Editor::putString)
 
 /**
  * To store Boolean type of value in shared preferences
@@ -35,7 +35,7 @@ fun SharedPreferences.prefString(def: String = "", key: String? = null) =
  * @param key key of particular value
  * */
 fun SharedPreferences.prefBoolean(def: Boolean = true, key: String? = null) =
-        preferenceManager(def, key, SharedPreferences::getBoolean, SharedPreferences.Editor::putBoolean)
+    preferenceManager(def, key, SharedPreferences::getBoolean, SharedPreferences.Editor::putBoolean)
 
 /**
  * To store Float type of value in shared preferences
@@ -43,7 +43,7 @@ fun SharedPreferences.prefBoolean(def: Boolean = true, key: String? = null) =
  * @param key key of particular value
  * */
 fun SharedPreferences.prefFloat(def: Float = 0F, key: String? = null) =
-        preferenceManager(def, key, SharedPreferences::getFloat, SharedPreferences.Editor::putFloat)
+    preferenceManager(def, key, SharedPreferences::getFloat, SharedPreferences.Editor::putFloat)
 
 /**
  * Generic extension function to actually store and get value in preferences.
@@ -53,19 +53,19 @@ fun SharedPreferences.prefFloat(def: Float = 0F, key: String? = null) =
  * @param setter extension function for setting value into shared preferences
  * */
 private inline fun <T> SharedPreferences.preferenceManager(
-        defaultValue: T,
-        key: String?,
-        crossinline getter: SharedPreferences.(String, T) -> T,
-        crossinline setter: SharedPreferences.Editor.(String, T) -> SharedPreferences.Editor
+    defaultValue: T,
+    key: String?,
+    crossinline getter: SharedPreferences.(String, T) -> T,
+    crossinline setter: SharedPreferences.Editor.(String, T) -> SharedPreferences.Editor
 ): ReadWriteProperty<Any, T> {
     return object : ReadWriteProperty<Any, T> {
         override fun getValue(thisRef: Any, property: KProperty<*>) =
-                getter(key ?: property.name, defaultValue)
+            getter(key ?: property.name, defaultValue)
 
         override fun setValue(
-                thisRef: Any, property: KProperty<*>,
-                value: T
+            thisRef: Any, property: KProperty<*>,
+            value: T
         ) =
-                edit().setter(key ?: property.name, value).apply()
+            edit().setter(key ?: property.name, value).apply()
     }
 }

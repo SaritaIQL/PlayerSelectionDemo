@@ -1,8 +1,8 @@
 package com.playerselection.util
 
 class ApiConstant {
-    companion object{
-        val API_401=401
+    companion object {
+        val API_401 = 401
 
     }
 }

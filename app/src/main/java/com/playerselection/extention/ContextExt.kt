@@ -74,21 +74,21 @@ fun Activity.showMapForNavigation(latitude: String, longitude: String) {
 }
 
 fun Activity.showAlert(
-        title: String,
-        msg: String?,
-        positiveButtonText: String,
-        negativeButtonText: String? = null,
-        alertDialogTheme: Int,
-        listener: DialogInterface.OnClickListener
+    title: String,
+    msg: String?,
+    positiveButtonText: String,
+    negativeButtonText: String? = null,
+    alertDialogTheme: Int,
+    listener: DialogInterface.OnClickListener
 ) {
     val builder = AlertDialog.Builder(this, alertDialogTheme)
-            .setTitle(title)
-            .setMessage(msg)
+        .setTitle(title)
+        .setMessage(msg)
     if (negativeButtonText == null) {
         builder.setNeutralButton(positiveButtonText, listener)
     } else {
         builder.setPositiveButton(positiveButtonText, listener)
-                .setNegativeButton(negativeButtonText, listener)
+            .setNegativeButton(negativeButtonText, listener)
     }
 
     val dialog = builder.create()
@@ -97,8 +97,8 @@ fun Activity.showAlert(
         val btnYes = dialog.getButton(DialogInterface.BUTTON_POSITIVE)
 
         val params = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
+            LinearLayout.LayoutParams.WRAP_CONTENT,
+            LinearLayout.LayoutParams.WRAP_CONTENT
         )
         params.setMargins(10, 0, 0, 0)
         btnYes.layoutParams = params
@@ -120,7 +120,7 @@ fun Context.getWidthOfScreen(): Int {
 
 fun Context.bitmapFromUri(uri: Uri): Bitmap? {
     val parcelFileDescriptor: ParcelFileDescriptor? = contentResolver
-            .openFileDescriptor(uri, "r")
+        .openFileDescriptor(uri, "r")
     parcelFileDescriptor?.let {
         val fileDescriptor: FileDescriptor = parcelFileDescriptor.fileDescriptor
         val bitmap: Bitmap = BitmapFactory.decodeFileDescriptor(fileDescriptor)
@@ -130,9 +130,9 @@ fun Context.bitmapFromUri(uri: Uri): Bitmap? {
 }
 
 fun Context.getPrefInstance(prefName: String): SharedPreferences =
-        this.getSharedPreferences(prefName, Context.MODE_PRIVATE)
+    this.getSharedPreferences(prefName, Context.MODE_PRIVATE)
 
 @SuppressLint("HardwareIds")
 fun Context.deviceId(): String =
-        Settings.Secure.getString(this.contentResolver, Settings.Secure.ANDROID_ID)
+    Settings.Secure.getString(this.contentResolver, Settings.Secure.ANDROID_ID)
 

@@ -6,14 +6,13 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.view.LayoutInflater
-import android.view.View
-import androidx.appcompat.app.AlertDialog
-import androidx.core.app.ActivityCompat
-
 import android.os.Build
 import android.text.InputFilter
+import android.view.LayoutInflater
+import android.view.View
 import android.widget.EditText
+import androidx.appcompat.app.AlertDialog
+import androidx.core.app.ActivityCompat
 import androidx.core.content.PermissionChecker
 import com.playerselection.util.AppConstants
 import java.text.DecimalFormat
@@ -38,7 +37,6 @@ fun Context.showCustomDialog(
         alertDialog.show()
     }
 }
-
 
 
 fun checkPermissions(activity: Activity, requestCode: Int, permission: String) {
@@ -82,58 +80,58 @@ fun checkLoationPermission(activity: Activity): Boolean {
         true
     }
 }
+
 fun changePointFormat(NUM: String): String {
     return DecimalFormat("0.00").format(NUM.toDouble())
 }
-fun setMaxLength(ed:EditText)
-{
+
+fun setMaxLength(ed: EditText) {
     val maxLength = ed.lineCount
     var FilterArray = arrayOfNulls<InputFilter>(1)
-    if(ed.lineCount>7) {
+    if (ed.lineCount > 7) {
         ed.lineCount
         FilterArray[0] = InputFilter.LengthFilter(maxLength)
         ed.filters = FilterArray
 
-    }else{
+    } else {
 
         FilterArray = arrayOfNulls(0)
         ed.filters = FilterArray
     }
 }
-fun changePhNumber(Num:String):String{
-    return Num.replace("(","").replace(")","").replace(" ","")
+
+fun changePhNumber(Num: String): String {
+    return Num.replace("(", "").replace(")", "").replace(" ", "")
 }
-fun addFormateToPhnumber(Num: String):String{
+
+fun addFormateToPhnumber(Num: String): String {
     var x = ""
-        x = "(" + Num.substring(0, 3) + ") " + Num.substring(3, 6) + " " + Num.substring(6)
+    x = "(" + Num.substring(0, 3) + ") " + Num.substring(3, 6) + " " + Num.substring(6)
 
 
     return x
 }
-fun addCanadianFormateToPhnumber(Num:String): String {
+
+fun addCanadianFormateToPhnumber(Num: String): String {
     var x = ""
 
-        if(Num.startsWith("(")){
-        if(Num.length == 1){
-            if(Num != "(")
-            {
+    if (Num.startsWith("(")) {
+        if (Num.length == 1) {
+            if (Num != "(") {
                 x = "($Num"
             }
-        }else if(Num.length == 4){
-            if(!Num.endsWith(") "))
-            {
+        } else if (Num.length == 4) {
+            if (!Num.endsWith(") ")) {
                 x = "$x$Num) "
             }
-        }
-        else if(Num.length == 9){
-            if(!Num.endsWith(" "))
-            {
+        } else if (Num.length == 9) {
+            if (!Num.endsWith(" ")) {
                 x = "$x$Num "
             }
         }
-    }else if(Num.length>10){
-            x = "(" + Num.substring(0, 3) + ") " + Num.substring(3, 6) + " " + Num.substring(6)
-        }
+    } else if (Num.length > 10) {
+        x = "(" + Num.substring(0, 3) + ") " + Num.substring(3, 6) + " " + Num.substring(6)
+    }
     return x
 }
 

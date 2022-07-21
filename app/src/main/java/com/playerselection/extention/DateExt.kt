@@ -92,7 +92,7 @@ fun String.convertDateTime(): String? {
         newTime*/
 
         val date = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ROOT).parse(this)
-        SimpleDateFormat("MMM,yyyy", Locale.US).format(date).toUpperCase(Locale.ROOT)
+        SimpleDateFormat("MMM,yyyy", Locale.US).format(date).uppercase(Locale.ROOT)
 
 
     } catch (e: Exception) {

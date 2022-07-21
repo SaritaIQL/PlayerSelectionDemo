@@ -1,4 +1,3 @@
-
 package com.playerselection.extention
 
 import android.view.View

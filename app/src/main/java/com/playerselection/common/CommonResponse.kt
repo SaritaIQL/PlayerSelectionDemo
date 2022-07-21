@@ -13,8 +13,7 @@ data class CommonResponse(
     constructor(parcel: Parcel) : this(
         parcel.readValue(Int::class.java.classLoader) as? Boolean,
         parcel.readString()
-    ) {
-    }
+    )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeValue(status)

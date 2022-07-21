@@ -19,35 +19,35 @@ fun String.highlightText(startIndex: Int, endIndex: Int, spanColor: Int): Spanna
 fun SpannableString.highlightText(startIndex: Int, endIndex: Int, spanColor: Int): SpannableString {
     return this.apply {
         this.setSpan(
-                ForegroundColorSpan(spanColor),
-                startIndex,
-                endIndex,
-                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+            ForegroundColorSpan(spanColor),
+            startIndex,
+            endIndex,
+            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
         )
     }
 }
 
 // extensions to set clickable text
 fun String.clickEvent(
-        startIndex: Int,
-        endIndex: Int,
-        isLink: Boolean,
-        clickEvent: () -> Unit
+    startIndex: Int,
+    endIndex: Int,
+    isLink: Boolean,
+    clickEvent: () -> Unit
 ): SpannableString {
     return SpannableString(this).clickEvent(startIndex, endIndex, isLink, clickEvent)
 }
 
 fun SpannableString.clickEvent(
-        startIndex: Int,
-        endIndex: Int,
-        isLink: Boolean,
-        clickEvent: () -> Unit
+    startIndex: Int,
+    endIndex: Int,
+    isLink: Boolean,
+    clickEvent: () -> Unit
 ): SpannableString {
     return this.apply {
         this.setSpan(
-                WordSpan(isLink, clickEvent), startIndex,
-                endIndex,
-                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+            WordSpan(isLink, clickEvent), startIndex,
+            endIndex,
+            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
         )
     }
 }
@@ -60,9 +60,9 @@ fun String.underlineText(startIndex: Int, endIndex: Int): SpannableString {
 fun SpannableString.underlineText(startIndex: Int, endIndex: Int): SpannableString {
     return this.apply {
         this.setSpan(
-                UnderlineSpan(), startIndex,
-                endIndex,
-                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+            UnderlineSpan(), startIndex,
+            endIndex,
+            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
         )
     }
 }
@@ -72,25 +72,25 @@ fun String.changeTextStyle(startIndex: Int, endIndex: Int, fontFamily: Typeface)
 }
 
 fun SpannableString.changeTextStyle(
-        startIndex: Int,
-        endIndex: Int,
-        fontFamily: Typeface
+    startIndex: Int,
+    endIndex: Int,
+    fontFamily: Typeface
 ): SpannableString {
     return this.apply {
         val fontFamilySpan: TypefaceSpan = CustomTypefaceSpanHelper(
-                "customTextStyle",
-                fontFamily
+            "customTextStyle",
+            fontFamily
         )
         this.setSpan(
-                fontFamilySpan, startIndex,
-                endIndex,
-                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+            fontFamilySpan, startIndex,
+            endIndex,
+            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
         )
     }
 }
 
 open class WordSpan(private val isLink: Boolean, private val onClickEvent: () -> Unit) :
-        ClickableSpan() {
+    ClickableSpan() {
     override fun onClick(widget: View) {
         onClickEvent()
     }

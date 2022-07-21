@@ -77,7 +77,7 @@ abstract class BaseActivity : AppCompatActivity(), BaseView {
     fun initProgressBar() {
         dialog = Dialog(this)
         dialog!!.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        dialog!!.window!!.setBackgroundDrawableResource(android.R.color.transparent);
+        dialog!!.window!!.setBackgroundDrawableResource(android.R.color.transparent)
         dialog!!.setContentView(R.layout.progress_dialog)
         dialog!!.setCancelable(false)
     }

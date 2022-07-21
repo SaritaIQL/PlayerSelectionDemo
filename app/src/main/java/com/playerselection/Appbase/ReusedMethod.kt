@@ -7,7 +7,7 @@ import androidx.core.content.ContextCompat
 import com.playerselection.R
 
 class ReusedMethod {
-    companion object{
+    companion object {
         fun displayMessage(context: Activity, message: String) {
             CustomToast.showToast(
                 context, message,

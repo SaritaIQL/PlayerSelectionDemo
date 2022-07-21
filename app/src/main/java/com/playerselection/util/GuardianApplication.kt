@@ -17,7 +17,7 @@ import org.koin.core.context.startKoin
 import timber.log.Timber
 import java.util.concurrent.atomic.AtomicBoolean
 
-class GuardianApplication :Application(),Application.ActivityLifecycleCallbacks{
+class GuardianApplication : Application(), Application.ActivityLifecycleCallbacks {
     var isMapAvailable = AtomicBoolean(true)
 
     var currentCountryCode: String? = null
@@ -58,7 +58,7 @@ class GuardianApplication :Application(),Application.ActivityLifecycleCallbacks{
 
     override fun onTerminate() {
         currentContext = appContext
-         Log.i(TAG,"TERMINATE_APP in onTerminate")
+        Log.i(TAG, "TERMINATE_APP in onTerminate")
         clean()
         super.onTerminate()
     }

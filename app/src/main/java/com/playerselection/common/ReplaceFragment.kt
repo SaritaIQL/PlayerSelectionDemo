@@ -3,7 +3,6 @@ package com.playerselection.common
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentTransaction
-import com.playerselection.R
 
 object ReplaceFragment {
     val transaction: FragmentTransaction? = null
